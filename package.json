@@ -1,0 +1,33 @@
+{
+  "name": "amazon-wishlist-to-drive-sheet",
+  "version": "1.0.0",
+  "description": "Job to add Amazon wishlist items to a Google spreadsheet",
+  "main": "index.js",
+  "dependencies": {
+    "google-spreadsheet": "^2.0.1",
+    "rsvp": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mchateloin/amazon-wishlist-to-drive-sheet.git"
+  },
+  "keywords": [
+    "automation",
+    "amazon",
+    "wishlist",
+    "google",
+    "spreadsheet",
+    "task",
+    "job"
+  ],
+  "author": "Miguel A. Chateloin <miguel@chateloin.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mchateloin/amazon-wishlist-to-drive-sheet/issues"
+  },
+  "homepage": "https://github.com/mchateloin/amazon-wishlist-to-drive-sheet#readme"
+}
