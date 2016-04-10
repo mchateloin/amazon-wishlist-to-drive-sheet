@@ -1,7 +1,7 @@
 var RSVP = require('rsvp'),
     https = require('https'),
-    config = JSON.parse(fs.readFileSync('config.json', 'utf8')),
     amazonToDriveKey = config['amazon_wishlist_id'] + '-' + config['google_spreadsheet_key'];
+    config = require('./config.js'),
 
 module.exports = {
 
