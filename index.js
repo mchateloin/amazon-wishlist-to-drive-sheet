@@ -29,11 +29,11 @@ RSVP.hash({
         rowAddPromises.push(utils.savePreviousWishlist(wishlist.currentItems));
 
         return RSVP.all(rowAddPromises);
-    }, function(){
-        console.log('Error finding wishlists or authenticating to drive!')
+    }, function(err){
+        console.log(err.stack);
     })
     .then(function(){
         console.log('Success adding rows to spreadsheet!');
-    }, function(){
-        console.log('Error adding rows to spreadsheet!');
+    }, function(err){
+        console.log(err.stack);
     });
