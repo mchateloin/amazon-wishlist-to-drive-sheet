@@ -2,7 +2,7 @@ var RSVP = require('rsvp'),
     utils = require('./lib')
     fs = require('fs'),
     GoogleSpreadsheet = require("google-spreadsheet");
-    config = JSON.parse(fs.readFileSync('config.json', 'utf8')),
+    config = require('./config.json'),
     doc = new GoogleSpreadsheet(config['google_spreadsheet_key']);
 
 
