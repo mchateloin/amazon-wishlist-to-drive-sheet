@@ -1,8 +1,8 @@
 var RSVP = require('rsvp'),
     utils = require('./lib')
     fs = require('fs'),
-    GoogleSpreadsheet = require("google-spreadsheet");
-    config = require('./config.json'),
+    GoogleSpreadsheet = require("google-spreadsheet"),
+    config = require('./config.js'),
     doc = new GoogleSpreadsheet(config['google_spreadsheet_key']);
 
 
