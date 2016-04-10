@@ -1,6 +1,7 @@
 var RSVP = require('rsvp'),
     https = require('https'),
     config = require('./config.js'),
+    s3bucket = require('./s3.js'),
     amazonToDriveKey = config['amazon_wishlist_id'] + '-' + config['google_spreadsheet_key'];
 
 module.exports = {
@@ -29,25 +30,35 @@ module.exports = {
 
     getPreviousWishlist: function(){
         return new RSVP.Promise(function(resolve, reject){
-            fs.readFile(amazonToDriveKey + '.json', 'utf8', function(err, data){
-                if (err) {
+            s3bucket.getObject({
+                Bucket: config['s3_bucket'],
+                Key: amazonToDriveKey + '.json',
+            }, function(err, data){
+                if(err){
                     resolve([]);
-                } else {
-                    resolve(JSON.parse(data));
+                    return;
                 }
-            });
+
+                resolve(JSON.parse(data.Body.toString()));
+            })
         });
     },
 
     savePreviousWishlist: function(wishlist){
         return new RSVP.Promise(function(resolve, reject){
-             fs.writeFile(amazonToDriveKey + '.json', 'utf8', JSON.stringify(wishlist), function(err){
-                 if(err){
-                    reject(err);
-                 } else {
-                    resolve();
-                 }
-             });
+            s3bucket.putObject({
+                Bucket: config['s3_bucket'],
+                Key: amazonToDriveKey + '.json',
+                Body: JSON.stringify(wishlist)
+            }, function(err, data){
+
+                if(err){
+                    reject();
+                    return;
+                }
+
+                resolve();
+            })
         })
     },
 
