@@ -1,10 +1,9 @@
 var RSVP = require('rsvp'),
-    utils = require('./lib')
-    fs = require('fs'),
+    utils = require('./lib'),
     GoogleSpreadsheet = require("google-spreadsheet"),
     config = require('./config.js'),
-    doc = new GoogleSpreadsheet(config['google_spreadsheet_key']);
-
+    doc = new GoogleSpreadsheet(config['google_spreadsheet_key']),
+    process = require('process');
 
 RSVP.hash({
         currentItems: utils.getWishlistFromAmazon(config['amazon_wishlist_id']),
@@ -30,10 +29,12 @@ RSVP.hash({
 
         return RSVP.all(rowAddPromises);
     }, function(err){
-        console.log(err.stack);
+        console.log(err);
+        process.exit();
     })
     .then(function(){
         console.log('Success adding rows to spreadsheet!');
     }, function(err){
-        console.log(err.stack);
+        console.log(err.stack || err.message || err);
+        process.exit();
     });

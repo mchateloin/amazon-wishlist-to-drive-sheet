@@ -20,9 +20,11 @@ module.exports = {
                 });
 
                 response.on('end', function() {
+                    console.log('Got previous wishlist from Amazon');
                     resolve(JSON.parse(body));
-                }).on('error', function(error){
-                    reject(error);
+                }).on('error', function(err){
+                    console.log('Error getting current wishlist from Amazon');
+                    reject(err);
                 })
             })
         });
@@ -35,10 +37,12 @@ module.exports = {
                 Key: amazonToDriveKey + '.json',
             }, function(err, data){
                 if(err){
+                    console.log('Empty previous wishlist from S3');
                     resolve([]);
                     return;
                 }
 
+                console.log('Loaded previous wishlist');
                 resolve(JSON.parse(data.Body.toString()));
             })
         });
@@ -53,10 +57,12 @@ module.exports = {
             }, function(err, data){
 
                 if(err){
-                    reject();
+                    console.log('Error saving previous wishlist');
+                    reject(err);
                     return;
                 }
 
+                console.log('Saved previous wishlist');
                 resolve();
             })
         })
@@ -66,10 +72,12 @@ module.exports = {
         return new RSVP.Promise(function(resolve, reject) {
             doc.useServiceAccountAuth(creds, function (err) {
                 if(err){
-                    reject();
+                    console.log('Failed to authenticate service account');
+                    reject(err);
                     return;
                 }
 
+                console.log('Authenticated service account');
                 resolve();
             })
         });
@@ -80,10 +88,12 @@ module.exports = {
             doc.addRow(sheetIndex, rowObj, function(err){
 
                 if(err){
-                    reject();
+                    console.log('Error adding row');
+                    reject(err);
                     return;
                 }
 
+                console.log('Added row');
                 resolve();
 
             });

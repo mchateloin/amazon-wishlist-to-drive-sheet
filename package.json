@@ -4,13 +4,15 @@
   "description": "Job to add Amazon wishlist items to a Google spreadsheet",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.3.2",
-    "google-spreadsheet": "^2.0.1",
-    "rsvp": "^3.2.1"
+    "aws-sdk": "2.3.2",
+    "foreman": "1.4.1",
+    "google-spreadsheet": "2.0.1",
+    "rsvp": "3.2.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nf start"
   },
   "repository": {
     "type": "git",
