@@ -1,6 +1,6 @@
 # An Amazon Wishlist to Google Drive integration
 
-This  job that posts new items from an Amazon wishlist to spreadsheet on Google Drive.
+This is a job that posts new items from an Amazon wishlist to spreadsheet on Google Drive.
 
 
 ## Requirements
