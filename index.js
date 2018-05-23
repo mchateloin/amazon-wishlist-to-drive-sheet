@@ -21,7 +21,6 @@ RSVP.hash({
           .map(function(item){
             return { image: item.picture, title: item.name, link: item.link };
           } ));
-        console.log('Document to add to: ', doc);
 
         rowAddPromises = itemsAdded.map(function(rowObj){
             return utils.addRowsToDriveSpreadsheet(doc, 0, {
