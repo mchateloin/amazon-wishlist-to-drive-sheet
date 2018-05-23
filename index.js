@@ -17,16 +17,15 @@ RSVP.hash({
         var itemsAdded = utils.getDifference(wishlist.previousItems, wishlist.currentItems);
 
         console.log(`Found ${itemsAdded.length} new items.`);
+        console.log(rowValues);
 
-        var rowValues = itemsAdded.map(function(item){
-                return {
-                    Image: '=IMAGE("' + item.picture + '")',
-                    Title: '=HYPERLINK("' + item.link + '", "' + item.name + '")'
-                };
-            }),
-            rowAddPromises = rowValues.map(function(rowObj){
-                return utils.addRowsToDriveSpreadsheet(doc, 1, rowObj);
+
+        rowAddPromises = rowValues.map(function(rowObj){
+            return utils.addRowsToDriveSpreadsheet(doc, 1, {
+                Image: '=IMAGE("' + rowObj.picture + '")',
+                Title: '=HYPERLINK("' + rowObj.link + '", "' + rowObj.name + '")'
             });
+        });
 
         rowAddPromises.push(utils.savePreviousWishlist(wishlist.currentItems));
 
