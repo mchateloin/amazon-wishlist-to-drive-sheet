@@ -14,8 +14,11 @@ RSVP.hash({
         })
     })
     .then(function(wishlist){
-        var itemsAdded = utils.getDifference(wishlist.previousItems, wishlist.currentItems),
-            rowValues = itemsAdded.map(function(item){
+        var itemsAdded = utils.getDifference(wishlist.previousItems, wishlist.currentItems);
+
+        console.log(`Found ${itemsAdded.length} new items.`);
+
+        var rowValues = itemsAdded.map(function(item){
                 return {
                     Image: '=IMAGE("' + item.picture + '")',
                     Title: '=HYPERLINK("' + item.link + '", "' + item.name + '")'
