@@ -17,7 +17,7 @@ RSVP.hash({
         var itemsAdded = utils.getDifference(wishlist.previousItems, wishlist.currentItems);
 
         console.log(`Found ${itemsAdded.length} new items.`);
-        console.log(rowValues);
+        console.log(itemsAdded);
 
 
         rowAddPromises = rowValues.map(function(rowObj){
