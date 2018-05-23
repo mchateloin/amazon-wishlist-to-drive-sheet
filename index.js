@@ -24,7 +24,7 @@ RSVP.hash({
 
         rowAddPromises = itemsAdded.map(function(rowObj){
             return utils.addRowsToDriveSpreadsheet(doc, 0, {
-                Image: '=IMAGE("' + rowObj.picture + '")',
+                Cover: '=IMAGE("' + rowObj.picture + '")',
                 Title: '=HYPERLINK("' + rowObj.link + '", "' + rowObj.name + '")'
             });
         });
