@@ -19,8 +19,8 @@ RSVP.hash({
         console.log(`Found ${itemsAdded.length} new items.`);
         console.log(itemsAdded
           .map(function(item){
-            return { image: item.image, title: item.title, link: item.link };
-          }));
+            return { image: item.picture, title: item.name, link: item.link };
+          } ));
 
 
         rowAddPromises = itemsAdded.map(function(rowObj){
