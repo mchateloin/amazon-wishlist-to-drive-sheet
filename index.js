@@ -17,10 +17,10 @@ RSVP.hash({
         var itemsAdded = utils.getDifference(wishlist.previousItems, wishlist.currentItems);
 
         console.log(`Found ${itemsAdded.length} new items.`);
-        console.log(itemsAdded);
+        console.log(itemsAdded.map(function(item) { image: item.image, title: item.title, link: item.link } ));
 
 
-        rowAddPromises = rowValues.map(function(rowObj){
+        rowAddPromises = itemsAdded.map(function(rowObj){
             return utils.addRowsToDriveSpreadsheet(doc, 1, {
                 Image: '=IMAGE("' + rowObj.picture + '")',
                 Title: '=HYPERLINK("' + rowObj.link + '", "' + rowObj.name + '")'
