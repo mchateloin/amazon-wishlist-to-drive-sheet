@@ -17,14 +17,14 @@ RSVP.hash({
         var itemsAdded = utils.getDifference(wishlist.previousItems, wishlist.currentItems);
 
         console.log(`Found ${itemsAdded.length} new items.`);
-        console.log(itemsAdded
+        console.log('Row contents to add: ', itemsAdded
           .map(function(item){
             return { image: item.picture, title: item.name, link: item.link };
           } ));
-
+        console.log('Document to add to: ', doc);
 
         rowAddPromises = itemsAdded.map(function(rowObj){
-            return utils.addRowsToDriveSpreadsheet(doc, 1, {
+            return utils.addRowsToDriveSpreadsheet(doc, 0, {
                 Image: '=IMAGE("' + rowObj.picture + '")',
                 Title: '=HYPERLINK("' + rowObj.link + '", "' + rowObj.name + '")'
             });
